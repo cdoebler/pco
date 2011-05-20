@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Main class for Pto
+ * Main class for PHP Chained Objects
  * @author Christian Doebler <info@christian-doebler.net>
  */
-class Pto {
+class Pco {
 	private $funcArgs = array(
 		'explode'		=> 1,
 //		'implode'		=> NOT NECESSARY
@@ -21,11 +21,11 @@ class Pto {
 	/**
 	 * initializer for static calls
 	 * @param mixed $input
-	 * @return Pto 
+	 * @return Pco 
 	 */
 	public static function init($input = false)
 	{
-		return new Pto($input);
+		return new Pco($input);
 	}
 	
 	/**
@@ -48,7 +48,7 @@ class Pto {
 			$args = $this->prepareArgs($func, $args);
 			$this->result = call_user_func_array($func, $args);
 		} else {
-			throw new PtoException('Function \'' . $func . '\' does not exist!');
+			throw new PcoException('Function \'' . $func . '\' does not exist!');
 		}
 		
 		return $this;
@@ -97,17 +97,17 @@ class Pto {
 }
 
 /**
- * Pto exceptions
+ * Pco exceptions
  * @author Christian Doebler <info@christian-doebler.net>
  */
-class PtoException extends Exception {
+class PcoException extends Exception {
 }
 
 /**
- * shortcut to Pto initialization
+ * shortcut to Pco initialization
  * @param mixed $input
- * @return Pto 
+ * @return Pco 
  */
-function pto($input = false) {
-	return new Pto($input);
+function pco($input = false) {
+	return new Pco($input);
 }
